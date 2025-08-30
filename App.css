@@ -1,0 +1,312 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f9fafb;
+}
+
+#root {
+  height: 100vh;
+}
+
+/* Smooth transitions for all interactive elements */
+.transition-all {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Custom scrollbar */
+.overflow-y-auto::-webkit-scrollbar {
+  width: 6px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Chat message animations */
+@keyframes messageSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.group:hover .group-hover\:opacity-100 {
+  opacity: 1;
+}
+
+/* Message bubble hover effects */
+.group:hover .opacity-0 {
+  opacity: 1;
+}
+
+/* iOS-style focus rings */
+.focus\:ring-2:focus {
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+}
+
+/* Gradient backgrounds */
+.bg-gradient-to-r {
+  background-image: linear-gradient(to right, var(--tw-gradient-stops));
+}
+
+.bg-gradient-to-br {
+  background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
+}
+
+/* Message bubble styles */
+.message-bubble {
+  animation: messageSlideIn 0.3s ease-out;
+}
+
+/* Loading spinner */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Button hover effects */
+button {
+  transition: all 0.15s ease-in-out;
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Chat input focus effect */
+input:focus, textarea:focus {
+  transform: scale(1.02);
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Reaction picker animation */
+.reaction-picker {
+  animation: fadeInScale 0.2s ease-out;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .w-80 {
+    width: 100%;
+    position: absolute;
+    z-index: 10;
+    height: 100%;
+  }
+  
+  .flex {
+    flex-direction: column;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #0f172a;
+    color: #f1f5f9;
+  }
+  
+  .bg-white {
+    background-color: #1e293b !important;
+  }
+  
+  .text-gray-900 {
+    color: #f1f5f9 !important;
+  }
+  
+  .text-gray-600 {
+    color: #94a3b8 !important;
+  }
+  
+  .border-gray-200 {
+    border-color: #334155 !important;
+  }
+}
+
+/* WhisperLink specific styles */
+.whisperlink-gradient {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.message-sent {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.message-received {
+  background-color: #f3f4f6;
+  color: #1f2937;
+}
+
+/* Reaction animations */
+.reaction-bounce {
+  animation: reactionBounce 0.3s ease-in-out;
+}
+
+@keyframes reactionBounce {
+  0%, 20%, 60%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  80% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Status indicator */
+.status-online {
+  background-color: #10b981;
+}
+
+.status-offline {
+  background-color: #6b7280;
+}
+
+/* Typing indicator */
+.typing-dots {
+  animation: typingDots 1.4s ease-in-out infinite;
+}
+
+@keyframes typingDots {
+  0%, 60%, 100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-10px);
+  }
+}
+
+/* File upload progress */
+.upload-progress {
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  animation: uploadProgress 0.3s ease-in-out;
+}
+
+@keyframes uploadProgress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: var(--progress);
+  }
+}
+
+/* Secret room indicator */
+.secret-room-glow {
+  box-shadow: 0 0 15px rgba(147, 51, 234, 0.3);
+}
+
+/* Voice message waveform */
+.voice-waveform {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.voice-bar {
+  width: 3px;
+  background-color: currentColor;
+  border-radius: 2px;
+  animation: voiceWave 1s ease-in-out infinite;
+}
+
+@keyframes voiceWave {
+  0%, 100% {
+    height: 4px;
+  }
+  50% {
+    height: 20px;
+  }
+}
+
+/* Connection status */
+.connection-indicator {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 50;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.3s ease-in-out;
+}
+
+.connection-connected {
+  background-color: #10b981;
+  color: white;
+}
+
+.connection-disconnected {
+  background-color: #ef4444;
+  color: white;
+}
+
+/* Smooth page transitions */
+.page-transition-enter {
+  opacity: 0;
+  transform: translateX(100px);
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.page-transition-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transform: translateX(-100px);
+  transition: opacity 300ms, transform 300ms;
+}
